@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect('sort.db')
+connection = sqlite3.connect('mydatabase.db')
 
 connection.execute('''
     CREATE TABLE IF NOT EXISTS employees(
@@ -27,5 +27,17 @@ employee_data = [
 ]
 
 connection.executemany('INSERT INTO employees (employee_ID, name, age, department) VALUES (?,?,?,?)', employee_data)
+
+# query data from the table
+result = connection.execute('SELECT * FROM employees ORDER BY age DESC')
+data = result.fetchall()
+
+# display the data
+for row in data:
+    print(f'employee_ID: {row[1]}')
+    print(f'name: {row[2]}')
+    print(f'age: {row[3]}')
+    print(f'department: {row[4]}')
+    print('')
 connection.commit()
 connection.close()

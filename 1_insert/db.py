@@ -1,6 +1,6 @@
 import sqlite3
 
-connection = sqlite3.connect('lesson1.db')
+connection = sqlite3.connect('mydatabase.db')
 
 connection.execute('''
     CREATE TABLE IF NOT EXISTS books (
